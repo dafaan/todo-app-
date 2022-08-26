@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>To do</title>
+</head>
+<body>
+    <div>
+        <h1 class="w3-center">update</h1>
+
+    </div>
+    <div class="container">
+        
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" value="{{a}}" name="title"><br><br>
+            <input class="w3-btn w3-cyan w3-text-white w3-round-large" type="submit" value="save">
+        </form>
+    </div>
+</body>

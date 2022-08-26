@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>To do</title>
+</head>
+<body>
+    <div>
+        <h1 class="w3-center">my to do app</h1>
+
+    </div>
+    <div class="container-fluid w3-padding-48">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="w3-table-all w3-centered">
+                    <tr>
+                        <th>title</th>
+                        <th>edit</th>
+                        <th><a href="add/" class="w3-btn w3-circle w3-cyan w3-text-white">+</a> new </th>
+                        <th></th>
+                    </tr>
+                    {% for i in event %}
+                    <tr>
+                        <td>{{i.title}}</td>
+                        <td>
+                            <a href="update/{{i.id}}" class="w3-btn w3-blue w3-circle w3-small"><i class="fas fa-pen"></i></a>
+                        </td>
+
+                        <td>
+                            <form action="delete/{{i.id}}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="delete" class="w3-btn w3-red w3-small">
+                            </form>
+                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+</html>
